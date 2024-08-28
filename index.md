@@ -35,7 +35,7 @@ Explicación de los tipos de datos
 - booleano (verdadero/falso): `true, false`
 
 ### Colecciones
-- listas de cosas:
+- listas de cosas
 ```yaml
 - uno
 - dos
