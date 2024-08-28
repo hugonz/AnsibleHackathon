@@ -32,10 +32,12 @@ Explicación de los tipos de datos
 ### Escalares
 - números: `1, 10, 3.1416, 2.5E10`
 - strings:
+  ```
   así
   "así"
   'así'
   incluyendo espacios dentro de las palabras
+  ```
 - booleano (verdadero/falso): `true, false`
 
 ### Colecciones
