@@ -51,7 +51,7 @@ trinity: 3
 1: one
 2: two
 ```
-- Puedo anidarlos y combinarlos
+- puedo anidarlos y combinarlos
 ```yaml
 albumes_shakira: # tienen un orden
   - Magia
@@ -78,7 +78,6 @@ patos: # no tienen orden
     - plátano
   comi_en_casa: false
 ```
-
 ### Referencias
 YAML Parser online https://yaml-online-parser.appspot.com/
 YAML Standard 1.2 https://yaml.org/spec/1.2.2/
