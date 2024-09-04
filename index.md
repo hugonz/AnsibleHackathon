@@ -116,7 +116,29 @@ Los módulos están escritos en Python e implementan la complejidad y la intelig
 
 =================
 ## Tareas
+### Estructura
 
+Las tareas tienen:
+- un nombre
+- un módulo
+- opcionalmente, parámetros para este módulo
+- modificadores de la tarea (loops, condicionales, delegación, etc)
+
+```yaml
+- name: Nombre de la tarea
+  # nombre del módulo
+  ansible.builtin.user:
+    # Parámetros
+    user: minombredeusuario
+    state: present
+  # Al nivel de la tarea, modificadores
+  delegate_to: localhost
+  loop:
+    - 1
+    - 2
+    - 3
+  when: ambiente == 'development'
+```
 ### Variables
 Las variables pueden venir de muchos lados:
 - El inventario
