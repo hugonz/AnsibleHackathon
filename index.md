@@ -219,13 +219,13 @@ Podemos correr las mismas tareas muchas veces, haciendo loops de distintas forma
       loop: "{{ range(1, 10) }}"
 ```
 
+| :exclamation:  ¿Cómo le darían un password a cada usuario?   |
+|--------------------------------------------------------------|
+
 Los filtros son parte de jinja y nos permiten transformar datos, generarlos, darles formato, etc.
 
 - https://docs.ansible.com/ansible/2.7/user_guide/playbooks_filters.html
 - https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_filters.html
-
-### Condicionales
-
 
 ## Playbooks - Tour de la colección builtin y módulos notables
 - copy
@@ -235,6 +235,5 @@ Los filtros son parte de jinja y nos permiten transformar datos, generarlos, dar
 - service
 - firewall
 - uri
-- 
 
 
