@@ -122,7 +122,9 @@ Las variables pueden venir de muchos lados:
 - El inventario
 - Declaradas explícitamente en un playbook
 - Desde la llamada de `ansible_playbook`
-- Variables "mágicas" que Ansible calcula por nosotros.
+- Variables "mágicas" que Ansible calcula por nosotros. Puedes averigüar lo que está disponible con el siguiente comando `ansible localhost -m setup`
+
+https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_variables.html
 
 Para usar su valor, usamos jinja con esta sintaxis:
 
@@ -149,7 +151,7 @@ Para usar su valor, usamos jinja con esta sintaxis:
 
 ### Registrar valores de tareas y usarlos luego
 
-Ansible escribe lo mínimo necesario a pantalla, recuerda que podemos estar automatizando 20 o 100 equipos. Puedes grabar el resultado de una tarea y luego mostrarlo o tomar decisiones con esta información.
+Ansible escribe lo mínimo necesario a pantalla, recuerda que podemos estar automatizando 20 o 100 equipos. Puedes grabar el resultado de una tarea y luego mostrarlo o tomar decisiones con esta información. https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_variables.html
 
 ```yaml
 - name: Registrar valores y usarlos
@@ -167,10 +169,43 @@ Ansible escribe lo mínimo necesario a pantalla, recuerda que podemos estar auto
 ```
 ### Loops y filtros
 
+Podemos correr las mismas tareas muchas veces, haciendo loops de distintas formas. https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_loops.html
+
+```yaml
+- name: Podemos repetir la misma tarea para un conjunto de elementos
+  hosts: all
+  become: true
+  tasks:
+    - name: Crea un usuario
+      ansible.builtin.user:
+        name: ansible_user
+        state: present
+
+    - name: Crea varios usuarios
+      ansible.builtin.user:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - jose
+        - maria
+        - jesus
+
+    - name: Usa un filtro para crear tu lista
+      ansible.builtin.user:
+        name: "user_{{ item }}"
+        state: present
+      loop: "{{ range(1, 10) }}"
+```
+
+Los filtros son parte de jinja y nos permiten transformar datos, generarlos, darles formato, etc.
+
+- https://docs.ansible.com/ansible/2.7/user_guide/playbooks_filters.html
+- https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_filters.html
+
 ### Condicionales
 
 
-## Playbooks 4 - Tour de la colección builtin y módulos notables
+## Playbooks - Tour de la colección builtin y módulos notables
 - copy
 - file
 - package
@@ -178,5 +213,6 @@ Ansible escribe lo mínimo necesario a pantalla, recuerda que podemos estar auto
 - service
 - firewall
 - uri
+- 
 
 
