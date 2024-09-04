@@ -122,6 +122,7 @@ Las variables pueden venir de muchos lados:
 - El inventario
 - Declaradas explícitamente en un playbook
 - Desde la llamada de `ansible_playbook`
+- Variables "mágicas" que Ansible calcula por nosotros.
 
 Para usar su valor, usamos jinja con esta sintaxis:
 
@@ -145,9 +146,28 @@ Para usar su valor, usamos jinja con esta sintaxis:
       ansible.builtin.debug:
         msg: "{{ ansible_date_time }}"
 ```
-  - loops
-  - delegación
-  - condicionales
+
+### Registrar valores de tareas y usarlos luego
+
+Ansible escribe lo mínimo necesario a pantalla, recuerda que podemos estar automatizando 20 o 100 equipos. Puedes grabar el resultado de una tarea y luego mostrarlo o tomar decisiones con esta información.
+
+```yaml
+- name: Registrar valores y usarlos
+  hosts: all
+  tasks:
+    - name: Averigua el tiempo que lleva corriendo el server
+      ansible.builtin.command:
+        cmd: uptime
+      register: salida_uptime
+    - name: Muestra el resultado de toda la tarea
+      ansible.builtin.debug:
+        msg: "{{ salida_uptime }}"
+
+```
+### Loops y filtros
+
+### Condicionales
+
 
 ## Playbooks 4 - Tour de la colección builtin y módulos notables
 - copy
