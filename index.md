@@ -115,7 +115,36 @@ Los módulos están escritos en Python e implementan la complejidad y la intelig
 ### 
 
 =================
-## Tareas 2 - temas avanzados
+## Tareas
+
+### Variables
+Las variables pueden venir de muchos lados:
+- El inventario
+- Declaradas explícitamente en un playbook
+- Desde la llamada de `ansible_playbook`
+
+Para usar su valor, usamos jinja con esta sintaxis:
+
+```yaml
+- name: Usamos variables por primera vez
+  hosts: all
+  # Definimos algunas variables para el playbook
+  vars:
+    ambiente: development
+    un_numero: 100
+  tasks:
+    - name: Muestra las variables que definimos
+      ansible.builtin.debug:
+        msg: "Mi ambiente es {{ ambiente }} y el numero definido es {{ un_numero }}"
+
+    - name: Muestra la version de S.O.
+      ansible.builtin.debug:
+        msg: "{{ ansible_distribution }}"
+
+    - name: Puede ser un objeto complejo, como la info del tiempo
+      ansible.builtin.debug:
+        msg: "{{ ansible_date_time }}"
+```
   - loops
   - delegación
   - condicionales
