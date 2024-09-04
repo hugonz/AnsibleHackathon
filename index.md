@@ -159,6 +159,7 @@ Ansible escribe lo mínimo necesario a pantalla, recuerda que podemos estar auto
       ansible.builtin.command:
         cmd: uptime
       register: salida_uptime
+
     - name: Muestra el resultado de toda la tarea
       ansible.builtin.debug:
         msg: "{{ salida_uptime }}"
