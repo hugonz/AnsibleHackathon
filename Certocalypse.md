@@ -16,7 +16,7 @@ Since 2026 and all the way into 2029, all certificate providers will start **red
 
 Increasingly it will be **from hard to impossible** to manually detect upcoming certificate expiration, manually renew or purchase them and manually install the certificates into the applications, servers, appliances, etc.
 
- ![Certocalypse timeline](/assets/images/timeline.png)
+ ![Certocalypse timeline](public_tls_certificate_validity_timeline_colored_fade.png)
  
 ### What about my own certificates, self-signed or from a private Certificate Autority(CA)?
 There's a historical trend from browser and cloud vendors to stop accepting any certificates with longer validity, no matter if they're public or private. It will be necessary to limit our own certificates so that they fall within the max duration in the previous table (47 days starting in 2029)
